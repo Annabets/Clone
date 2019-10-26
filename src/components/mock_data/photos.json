@@ -2,96 +2,144 @@
   "items": [
     {
       "id": 100,
+      "photographer":"Johannes Plenio",
+      "photographer_url":"https://www.pexels.com/@jplenio",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/bread.jpg"
       }
     },
     {
       "id": 101,
+      "photographer":"Jonathan Borba",
+      "photographer_url":"https://www.pexels.com/@jonathan-borba-1491594",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/bridge.jpg"
       }
     },
     {
       "id": 102,
+      "photographer":"Pedro Sandrini",
+      "photographer_url":"https://www.pexels.com/@pedro",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/burgers_food.jpeg"
       }
     },
     {
       "id": 103,
+      "photographer":"Caleb Oquendo",
+      "photographer_url":"https://www.pexels.com/@caleboquendo",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/city_skyline.jpeg"
       }
     },
     {
       "id": 104,
+      "photographer":"Wendy Wei",
+      "photographer_url":"https://www.pexels.com/@wendywei",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/diving.jpg"
       }
     },
     {
       "id": 105,
+      "photographer":"Ree",
+      "photographer_url":"https://www.pexels.com/@ree-430381",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/flowers_sunset.jpg"
       }
     },
     {
       "id": 106,
+      "photographer":"Dids",
+      "photographer_url":"https://www.pexels.com/@didsss",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/forest.jpg"
       }
     },
     {
       "id": 107,
+      "photographer":"Ricardo Esquivel",
+      "photographer_url":"https://www.pexels.com/@rickyrecap",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/giraffe.jpg"
       }
     },
     {
       "id": 108,
+      "photographer":"Renato Abati",
+      "photographer_url":"https://www.pexels.com/@renatoabati",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/golden_gate_bridge.jpg"
       }
     },
     {
       "id": 109,
+      "photographer":"Collis",
+      "photographer_url":"https://www.pexels.com/@photosbycollis",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/historical-building.jpeg"
       }
     },
     {
       "id": 110,
+      "photographer":"Maël BALLAND",
+      "photographer_url":"https://www.pexels.com/@toulouse",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/horses.jpg"
       }
     },
     {
       "id": 111,
+      "photographer":"KML",
+      "photographer_url":"https://www.pexels.com/@kml-1179532",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/house_architecture.jpeg"
       }
     },
     {
       "id": 112,
+      "photographer":"Mash Babkova",
+      "photographer_url":"https://www.pexels.com/@mash-babkova-1589136",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/iphone_charging.jpg"
       }
     },
     {
       "id": 113,
+      "photographer":"Avelino Calvar Martinez",
+      "photographer_url":"https://www.pexels.com/@shotbyrain",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/iphone_notes.jpg"
       }
     },
     {
       "id": 114,
+      "photographer":"ELEVATE",
+      "photographer_url":"https://www.pexels.com/@elevate",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/leaning_tower_of_pisa.jpg"
       }
     },
     {
       "id": 115,
+      "photographer":"fotografierende",
+      "photographer_url":"https://www.pexels.com/@fotografierende",
+      "liked":false,
       "src": {
         "original": "./newsletter_photos/lenses.jpeg"
       }
