@@ -180,3 +180,33 @@ ul .search-categories li{
     line-height: 19px;
     font-weight: 300;
 }
+
+.Photo-grid{
+    padding: 0 20px;
+    margin-top: 20px;
+}
+
+.Photo-grid-title h2 {
+    font-weight: 600;
+}
+
+.Grid-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Grid-column{
+    flex: 25%;
+    box-sizing: border-box;
+}
+.Grid-column:not(:last-child){
+    padding-right: 1.45rem;
+}
+
+.Column-item{
+    margin-bottom: 1.45rem;
+}
+
+.Column-item img{
+    width: 100%;
+}

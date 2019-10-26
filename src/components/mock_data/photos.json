@@ -1,0 +1,100 @@
+{
+  "items": [
+    {
+      "id": 100,
+      "src": {
+        "original": "./newsletter_photos/bread.jpg"
+      }
+    },
+    {
+      "id": 101,
+      "src": {
+        "original": "./newsletter_photos/bridge.jpg"
+      }
+    },
+    {
+      "id": 102,
+      "src": {
+        "original": "./newsletter_photos/burgers_food.jpeg"
+      }
+    },
+    {
+      "id": 103,
+      "src": {
+        "original": "./newsletter_photos/city_skyline.jpeg"
+      }
+    },
+    {
+      "id": 104,
+      "src": {
+        "original": "./newsletter_photos/diving.jpg"
+      }
+    },
+    {
+      "id": 105,
+      "src": {
+        "original": "./newsletter_photos/flowers_sunset.jpg"
+      }
+    },
+    {
+      "id": 106,
+      "src": {
+        "original": "./newsletter_photos/forest.jpg"
+      }
+    },
+    {
+      "id": 107,
+      "src": {
+        "original": "./newsletter_photos/giraffe.jpg"
+      }
+    },
+    {
+      "id": 108,
+      "src": {
+        "original": "./newsletter_photos/golden_gate_bridge.jpg"
+      }
+    },
+    {
+      "id": 109,
+      "src": {
+        "original": "./newsletter_photos/historical-building.jpeg"
+      }
+    },
+    {
+      "id": 110,
+      "src": {
+        "original": "./newsletter_photos/horses.jpg"
+      }
+    },
+    {
+      "id": 111,
+      "src": {
+        "original": "./newsletter_photos/house_architecture.jpeg"
+      }
+    },
+    {
+      "id": 112,
+      "src": {
+        "original": "./newsletter_photos/iphone_charging.jpg"
+      }
+    },
+    {
+      "id": 113,
+      "src": {
+        "original": "./newsletter_photos/iphone_notes.jpg"
+      }
+    },
+    {
+      "id": 114,
+      "src": {
+        "original": "./newsletter_photos/leaning_tower_of_pisa.jpg"
+      }
+    },
+    {
+      "id": 115,
+      "src": {
+        "original": "./newsletter_photos/lenses.jpeg"
+      }
+    }
+  ]
+}
