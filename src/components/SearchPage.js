@@ -1,4 +1,5 @@
 import React from 'react';
+import PhotoGrid from './PhotoGrid';
 
 class SearchPage extends React.Component {
     constructor(props){
@@ -8,7 +9,7 @@ class SearchPage extends React.Component {
     render() {
         return(
             <>
-
+                <PhotoGrid/>
             </>
         )
     }

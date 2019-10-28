@@ -34,9 +34,9 @@ class Modal extends React.Component{
                     <div className="Modal-content">
                         <div className="Modal-action-bar">
                             <a className="modal-like-btn">
-                                <img src="./n-active-like-btn-black.svg" width="24" height="24" alt=""/>
+                                <img src={`${process.env.PUBLIC_URL}/n-active-like-btn-black.svg`} width="24" height="24" alt=""/>
                                 {this.props.modalPhoto.liked &&
-                                <img src="./active-like-btn.svg" width="24" height="24" alt=""/>}
+                                <img src={`${process.env.PUBLIC_URL}/active-like-btn.svg`} width="24" height="24" alt=""/>}
                             </a>
                             <div className="Modal-download">
                                 <button className="transparent-btn download-btn" onClick={this.handleDownloadPhoto}
@@ -45,7 +45,7 @@ class Modal extends React.Component{
                                 </button>
                                 <div className="Modal-dropdown">
                                     <div className="dropdown-btn">
-                                        <img src="./dropdwn-icon.svg" width="24" height="24" alt=""/>
+                                        <img src={`${process.env.PUBLIC_URL}/dropdwn-icon.svg`} width="24" height="24" alt=""/>
                                     </div>
                                     <div className="dropdown-content">
                                         <div className="dropdown-content-pointer"/>
@@ -83,7 +83,7 @@ class Modal extends React.Component{
                             </div>
                         </div>
                         <div className="Modal-photo">
-                            <img src={this.props.modalPhoto.src.original} alt=""/>
+                            <img src={`${process.env.PUBLIC_URL}/${this.props.modalPhoto.src.original}`} alt=""/>
                         </div>
                     </div>
                 </div>
