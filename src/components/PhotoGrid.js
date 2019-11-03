@@ -65,12 +65,14 @@ class PhotoGrid extends React.Component {
     render() {
         //number of columns depends on window width
         const columns=[0,1,2,3];
+        const isHomePage = window.location.pathname===`/`;
+        const isSearchPage = window.location.pathname.includes(`/search`);
         return(
             <>
-                <section className="Photo-grid">
+                <section className="Photo-grid" style={isSearchPage?{top:'57px'}:{top:'0'}}>
                     <div className="Photo-grid-title">
-                        {window.location.pathname===`/` && <h2>{'Free Stock Photos'}</h2>}
-                        {window.location.pathname.includes(`/search`) && <h1>{'Search results'}</h1>}
+                        {isHomePage && <h2>{'Free Stock Photos'}</h2>}
+                        {isSearchPage && <h1>{'Search results'}</h1>}
                     </div>
                     <div className="Grid-container">
                         {this.renderContainerColumns(columns)}

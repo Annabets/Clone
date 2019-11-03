@@ -23,7 +23,7 @@ class Navbar extends React.Component{
                                 <form role="search">
                                     <div className="text-input-with-btn">
                                         <input id="nav-srch" type="search" placeholder="Search for free photos" required="required"/>
-                                        <button className="transparent-btn" type="submit" title="Search for stock photos">
+                                        <button className="transparent-btn search-btn" type="submit" title="Search for stock photos">
                                             <img src={`${process.env.PUBLIC_URL}/search-icon.svg`} width="20" height="20" alt=""/>
                                         </button>
                                     </div>
