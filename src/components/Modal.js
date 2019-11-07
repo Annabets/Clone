@@ -1,5 +1,8 @@
 import React from 'react';
 import download from 'downloadjs';
+import notLikedBtn from '../assets/icons/n-active-like-btn-black.svg';
+import likedBtn from '../assets/icons/active-like-btn.svg';
+import dropdwnBtn from '../assets/icons/dropdwn-icon.svg';
 
 class Modal extends React.Component{
     constructor(props){
@@ -34,9 +37,10 @@ class Modal extends React.Component{
                     <div className="Modal-content">
                         <div className="Modal-action-bar">
                             <a className="modal-like-btn">
-                                <img src={`${process.env.PUBLIC_URL}/n-active-like-btn-black.svg`} width="24" height="24" alt=""/>
+                                {this.props.modalPhoto.liked ||
+                                <img src={notLikedBtn} width="24" height="24" alt=""/>}
                                 {this.props.modalPhoto.liked &&
-                                <img src={`${process.env.PUBLIC_URL}/active-like-btn.svg`} width="24" height="24" alt=""/>}
+                                <img src={likedBtn} width="24" height="24" alt=""/>}
                             </a>
                             <div className="Modal-download">
                                 <button className="transparent-btn download-btn" onClick={this.handleDownloadPhoto}
@@ -45,7 +49,7 @@ class Modal extends React.Component{
                                 </button>
                                 <div className="Modal-dropdown">
                                     <div className="dropdown-btn">
-                                        <img src={`${process.env.PUBLIC_URL}/dropdwn-icon.svg`} width="24" height="24" alt=""/>
+                                        <img src={dropdwnBtn} width="24" height="24" alt=""/>
                                     </div>
                                     <div className="dropdown-content">
                                         <div className="dropdown-content-pointer"/>
@@ -83,7 +87,7 @@ class Modal extends React.Component{
                             </div>
                         </div>
                         <div className="Modal-photo">
-                            <img src={`${process.env.PUBLIC_URL}/${this.props.modalPhoto.src.original}`} alt=""/>
+                            <img src={`${this.props.modalPhoto.src.original}`} alt=""/>
                         </div>
                     </div>
                 </div>

@@ -1,15 +1,14 @@
 import React from 'react';
-import photos from './mock_data/photos';
+import {photos} from '../assets/mock_data/photos';
 import Modal from './Modal';
-import randomImage from './mock_data/hero_image';
+import notLikedBtn from '../assets/icons/n-active-like-btn.svg';
+import likedBtn from '../assets/icons/active-like-btn.svg';
 
 class PhotoGrid extends React.Component {
     constructor(props){
         super(props)
 
         this.state = {
-            //uncomment and remove setState for modalPhoto to see how download works
-            //modalPhoto: randomImage.photos[0],
             modalPhoto: {},
             isModalOpen: false
         }
@@ -18,20 +17,20 @@ class PhotoGrid extends React.Component {
     }
 
     renderColumn=(colNum)=>{
-        let columnPhotos = photos.items.filter((item,index)=>{
+        let columnPhotos = photos.filter((item,index)=>{
             return (index%4===colNum)
         })
-        return columnPhotos.map((item)=>{
+        return columnPhotos.map((photo)=>{
             return(
-                <div className="Column-item" key={item.id} id={item.id} onClick={this.handleGridItemClicked}>
-                    <img className="Column-item-img" src={`${process.env.PUBLIC_URL}/${item.src.original}`} alt=""/>
+                <div className="Column-item" key={photo.id} id={photo.id} onClick={this.handleGridItemClicked}>
+                    <img className="Column-item-img" src={`${photo.src.original}`} alt=""/>
                     <div className="Column-item-content">
-                        <a href={`${item.photographer_url}`} target="_blank">
-                            {`${item.photographer}`}
+                        <a href={`${photo.photographer_url}`} target="_blank">
+                            {`${photo.photographer}`}
                         </a>
                         <button className="transparent-btn">
-                            <img src={`${process.env.PUBLIC_URL}/n-active-like-btn.svg`} width="24" height="24" alt=""/>
-                            {item.liked && <img src={`${process.env.PUBLIC_URL}/active-like-btn.svg`} width="24" height="24" alt=""/>}
+                            {photo.liked || <img src={notLikedBtn} width="24" height="24" alt=""/>}
+                            {photo.liked && <img src={likedBtn} width="24" height="24" alt=""/>}
                         </button>
                     </div>
                 </div>
@@ -50,7 +49,7 @@ class PhotoGrid extends React.Component {
     handleGridItemClicked = (e)=>{
         if(e.target.className === "Column-item-content" || e.target.className === "Column-item-img"){
             this.setState({
-                modalPhoto: photos.items.find((item)=>{return item.id === Number(e.currentTarget.id)}),
+                modalPhoto: photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}),
                 isModalOpen:true
             })
         }

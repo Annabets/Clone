@@ -1,6 +1,7 @@
 import React from 'react';
-import randomImage from './mock_data/hero_image';
-import {items} from './mock_data/categories';
+import randomImage from '../assets/mock_data/hero_image';
+import {items} from '../assets/categories';
+import srchIcon from '../assets/icons/search-icon-black.svg';
 
 class Hero extends React.Component {
     constructor(props){
@@ -33,7 +34,7 @@ class Hero extends React.Component {
                                 <div className="text-input-with-btn">
                                     <input id="hero-srch" type="search" placeholder="Search for free photos" required="required"/>
                                     <button className="transparent-btn search-btn" type="submit" title="Search for stock photos">
-                                        <img src={`${process.env.PUBLIC_URL}/search-icon-black.svg`} width="20" height="20" alt=""/>
+                                        <img src={srchIcon} width="20" height="20" alt=""/>
                                     </button>
                                 </div>
                             </form>
