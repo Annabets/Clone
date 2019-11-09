@@ -5,12 +5,31 @@ import srchIcon from '../assets/icons/search-icon.svg';
 class Navbar extends React.Component{
     constructor(props){
         super(props)
+
+        this.state = {
+            isOnTop: true
+        }
+    }
+
+    handleScroll = ()=>{
+        if (document.documentElement.scrollTop > 260)
+            this.setState({isOnTop:false})
+        else
+            this.setState({isOnTop:true})
+    }
+
+    componentDidMount = ()=>{
+        window.addEventListener("scroll", this.handleScroll);
+    }
+
+    componentWillUnmount= ()=>{
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     render() {
         return(
             <>
-                <header className="Navbar">
+                <header className={`Navbar ${this.state.isOnTop?'Navbar-transparent':null}`}>
                     <div className="Navbar-container">
                         <div className="Navbar-container-item">
                             <div className="Navbar-navig">
@@ -21,7 +40,7 @@ class Navbar extends React.Component{
                                     <div className="Navbar-navig-logo-txt">{'Pexels'}</div>
                                 </a>
                             </div>
-                            <div className="Navbar-search">
+                            <div className={`Navbar-search ${this.state.isOnTop?'Navbar-search-hide':null}`}>
                                 <form role="search">
                                     <div className="text-input-with-btn">
                                         <input id="nav-srch" type="search" placeholder="Search for free photos" required="required"/>
