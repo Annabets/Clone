@@ -27,9 +27,10 @@ class Navbar extends React.Component{
     }
 
     render() {
+        const isHomePage = window.location.pathname==='/';
         return(
             <>
-                <header className={`Navbar ${this.state.isOnTop?'Navbar-transparent':null}`}>
+                <header className={`Navbar ${this.state.isOnTop && isHomePage?'Navbar-transparent':null}`}>
                     <div className="Navbar-container">
                         <div className="Navbar-container-item">
                             <div className="Navbar-navig">
@@ -40,7 +41,7 @@ class Navbar extends React.Component{
                                     <div className="Navbar-navig-logo-txt">{'Pexels'}</div>
                                 </a>
                             </div>
-                            <div className={`Navbar-search ${this.state.isOnTop?'Navbar-search-hide':null}`}>
+                            <div className={`Navbar-search ${this.state.isOnTop && isHomePage?'Navbar-search-hide':null}`}>
                                 <form role="search">
                                     <div className="text-input-with-btn">
                                         <input id="nav-srch" type="search" placeholder="Search for free photos" required="required"/>
