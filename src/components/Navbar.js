@@ -6,32 +6,29 @@ import srchIcon from '../assets/icons/search-icon.svg';
 class Navbar extends React.Component{
     constructor(props){
         super(props)
-
-        this.state = {
-            isOnTop: true
-        }
     }
 
     handleScroll = ()=>{
-        if (document.documentElement.scrollTop > 260)
-            this.setState({isOnTop:false})
-        else
-            this.setState({isOnTop:true})
+        const {isOnTop,setScrollFlag} = this.props;
+        if (document.documentElement.scrollTop > 260 && isOnTop)
+            setScrollFlag(false)
+        else if (document.documentElement.scrollTop < 260 && !isOnTop)
+            setScrollFlag(true)
     }
 
     componentDidMount = ()=>{
-        window.addEventListener("scroll", this.handleScroll);
+        this.props.isHomePage && window.addEventListener("scroll", this.handleScroll);
     }
 
     componentWillUnmount= ()=>{
-        window.removeEventListener("scroll", this.handleScroll);
+        this.props.isHomePage && window.removeEventListener("scroll", this.handleScroll);
     }
 
     render() {
-        const isHomePage = window.location.pathname==='/';
+        const {isHomePage, isOnTop} = this.props;
         return(
             <>
-                <header className={`Navbar ${this.state.isOnTop && isHomePage?'Navbar-transparent':null}`}>
+                <header className={`Navbar ${isOnTop && isHomePage?'Navbar-transparent':null}`}>
                     <div className="Navbar-container">
                         <div className="Navbar-container-item">
                             <div className="Navbar-navig">
@@ -42,7 +39,7 @@ class Navbar extends React.Component{
                                     <div className="Navbar-navig-logo-txt">{'Pexels'}</div>
                                 </a>
                             </div>
-                            <div className={`Navbar-search ${this.state.isOnTop && isHomePage?'Navbar-search-hide':null}`}>
+                            <div className={`Navbar-search ${isOnTop && isHomePage?'Navbar-search-hide':null}`}>
                                 <form role="search">
                                     <div className="text-input-with-btn">
                                         <input id="nav-srch" type="search" placeholder="Search for free photos" required="required"/>
@@ -65,7 +62,8 @@ class Navbar extends React.Component{
 
 Navbar.propTypes = {
     isOnTop: PropTypes.bool,
-    isHomePage: PropTypes.bool.isRequired
+    isHomePage: PropTypes.bool.isRequired,
+    setScrollFlag: PropTypes.func
 }
 
 export default Navbar;

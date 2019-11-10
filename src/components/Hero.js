@@ -24,6 +24,10 @@ class Hero extends React.Component {
         })
     }
 
+    shouldComponentUpdate() {
+        return false
+    }
+
     render() {
         return(
             <>
