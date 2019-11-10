@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import download from 'downloadjs';
 import notLikedBtn from '../assets/icons/n-active-like-btn-black.svg';
 import likedBtn from '../assets/icons/active-like-btn.svg';
@@ -94,6 +95,10 @@ class Modal extends React.Component{
             </>
         )
     }
+}
+
+Modal.propTypes = {
+    modalPhoto: PropTypes.object.isRequired
 }
 
 export default Modal;

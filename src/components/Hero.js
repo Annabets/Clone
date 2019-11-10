@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import randomImage from '../assets/mock_data/hero_image';
 import {items} from '../assets/categories';
 import srchIcon from '../assets/icons/search-icon-black.svg';
@@ -58,6 +59,10 @@ class Hero extends React.Component {
             </>
         )
     }
+}
+
+Hero.propTypes = {
+    photo: PropTypes.object.isRequired
 }
 
 export default Hero;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {photos} from '../assets/mock_data/photos';
 import Modal from './Modal';
 import notLikedBtn from '../assets/icons/n-active-like-btn.svg';
@@ -81,6 +82,17 @@ class PhotoGrid extends React.Component {
             </>
         )
     }
+}
+
+PhotoGrid.propTypes = {
+    isHomePage: PropTypes.bool.isRequired,
+    isSearchPage: PropTypes.bool.isRequired,
+    searchCategory: PropTypes.string.isRequired,
+    isLoadingPhotos: PropTypes.bool.isRequired,
+    columns: PropTypes.array.isRequired,
+    photos: PropTypes.object.isRequired,
+    modalPhoto: PropTypes.object.isRequired,
+    isModalOpen: PropTypes.bool.isRequired
 }
 
 export default PhotoGrid;

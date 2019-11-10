@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import logo from '../assets/icons/logo.svg';
 import srchIcon from '../assets/icons/search-icon.svg';
 
@@ -60,6 +61,11 @@ class Navbar extends React.Component{
             </>
         )
     }
+}
+
+Navbar.propTypes = {
+    isOnTop: PropTypes.bool,
+    isHomePage: PropTypes.bool.isRequired
 }
 
 export default Navbar;

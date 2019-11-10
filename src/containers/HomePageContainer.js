@@ -5,11 +5,22 @@ import Hero from '../components/Hero';
 import PhotoGridContainer from './PhotoGridContainer';
 
 function HomePageContainer(props) {
+    const {homePage} = props;
     return (
         <>
-            <Navbar/>
-            <Hero/>
-            <PhotoGridContainer/>
+            <Navbar
+                isHomePage={true}
+                isOnTop={homePage.isOnTop}
+            />
+            <Hero
+                photo={homePage.heroPhoto}
+            />
+            <PhotoGridContainer
+                isHomePage={true}
+                isSearchPage={false}
+                searchCategory=''
+                photos={homePage.curatedPhotos}
+            />
         </>
     )
 }

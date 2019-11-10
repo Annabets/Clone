@@ -4,10 +4,18 @@ import Navbar from '../components/Navbar';
 import PhotoGridContainer from './PhotoGridContainer';
 
 function SearchPageContainer(props) {
+    const {searchPage} = props;
     return (
         <>
-            <Navbar/>
-            <PhotoGridContainer/>
+            <Navbar
+                isHomePage={false}
+            />
+            <PhotoGridContainer
+                isHomePage={false}
+                isSearchPage={true}
+                searchCategory={searchPage.searchCategory}
+                photos={searchPage.searchPhotos}
+            />
         </>
     )
 }

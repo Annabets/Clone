@@ -1,3 +1,8 @@
-export function searchPageReducer(state={},action){
+const initialState = {
+    searchCategory:'',
+    searchPhotos:{}
+}
+
+export function searchPageReducer(state = initialState,action){
     return state;
 }
