@@ -8,18 +8,16 @@ import likedBtn from '../assets/icons/active-like-btn.svg';
 class PhotoGrid extends React.Component {
     constructor(props){
         super(props)
-
+        this.handleResize();
         this.state = {
             modalPhoto: {},
             isModalOpen: false
         }
-
-        this.handleGridItemClicked = this.handleGridItemClicked.bind(this);
     }
 
-    renderColumn=(colNum)=>{
+    renderColumn=(colNum,colLen)=>{
         let columnPhotos = photos.filter((item,index)=>{
-            return (index%4===colNum)
+            return (index%colLen===colNum)
         })
         return columnPhotos.map((photo)=>{
             return(
@@ -42,7 +40,7 @@ class PhotoGrid extends React.Component {
     renderContainerColumns = (columns)=>{
         return columns.map((item,index)=>{
             return(
-                <div key={index} className="Grid-column">{this.renderColumn(index)}</div>
+                <div key={index} className="Grid-column">{this.renderColumn(index,columns.length)}</div>
             )
         })
     }
@@ -62,11 +60,30 @@ class PhotoGrid extends React.Component {
         })
     }
 
+    handleResize = ()=>{
+        const {columns,setColumns} = this.props;
+        const colNum = columns.length;
+        const width = window.innerWidth;
+        if(width < 625 && colNum!==1)
+            setColumns(1)
+        else if(width > 625 && width < 1000 && colNum!==2)
+            setColumns(2)
+        else if(width > 1000 && width < 1500 && colNum!==3)
+            setColumns(3)
+        else if(width > 1500 && colNum!==4)
+            setColumns(4)
+    }
+
+    componentDidMount = ()=>{
+        window.addEventListener("resize", this.handleResize);
+    }
+
+    componentWillUnmount= ()=>{
+        window.removeEventListener("resize", this.handleResize);
+    }
+
     render() {
-        //number of columns depends on window width
-        const columns=[0,1,2,3];
-        const isHomePage = window.location.pathname===`/`;
-        const isSearchPage = window.location.pathname.includes(`/search`);
+        const {columns, isHomePage, isSearchPage} = this.props;
         return(
             <>
                 <section className="Photo-grid" style={isSearchPage?{top:'57px'}:{top:'0'}}>
@@ -92,7 +109,8 @@ PhotoGrid.propTypes = {
     columns: PropTypes.array.isRequired,
     photos: PropTypes.object.isRequired,
     modalPhoto: PropTypes.object.isRequired,
-    isModalOpen: PropTypes.bool.isRequired
+    isModalOpen: PropTypes.bool.isRequired,
+    setColumns: PropTypes.func.isRequired
 }
 
 export default PhotoGrid;

@@ -1,3 +1,5 @@
+import {photoGridConstants as _} from "../constants/photoGridConstants";
+
 const initialState = {
     isLoadingPhotos: false,
     columns:[],
@@ -6,5 +8,14 @@ const initialState = {
 }
 
 export function photoGridReducer(state = initialState,action){
-    return state;
+    switch (action.type) {
+        case _.SET_COLUMNS:
+            return{
+                ...state,
+                columns: action.payload
+            }
+
+        default:
+            return state
+    }
 }
