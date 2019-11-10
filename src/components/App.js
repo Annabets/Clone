@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.css';
-import HomePage from './HomePage';
+import HomePageContainer from '../containers/HomePageContainer';
 import SearchPage from './SearchPage';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
@@ -9,7 +9,7 @@ function App(props) {
         <div className="App">
             <Router>
                 <Route exact path="/">
-                    <HomePage/>
+                    <HomePageContainer/>
                 </Route>
                 <Route strict path="/search">
                     <SearchPage/>
