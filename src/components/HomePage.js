@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 import Hero from './Hero';
 import PhotoGrid from './PhotoGrid';
 
@@ -10,6 +11,7 @@ class HomePage extends React.Component {
     render() {
         return(
             <>
+                <Navbar/>
                 <Hero/>
                 <PhotoGrid/>
             </>

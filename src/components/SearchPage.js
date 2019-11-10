@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './Navbar';
 import PhotoGrid from './PhotoGrid';
 
 class SearchPage extends React.Component {
@@ -9,6 +10,7 @@ class SearchPage extends React.Component {
     render() {
         return(
             <>
+                <Navbar/>
                 <PhotoGrid/>
             </>
         )
