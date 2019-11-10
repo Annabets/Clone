@@ -4,13 +4,8 @@ import HomePage from './HomePage';
 import SearchPage from './SearchPage';
 import {BrowserRouter as Router,Route} from 'react-router-dom';
 
-class App extends React.Component {
-  constructor(props){
-    super(props)
-  }
-
-  render(){
-    return(
+function App(props) {
+    return (
         <div className="App">
             <Router>
                 <Route exact path="/">
@@ -22,7 +17,6 @@ class App extends React.Component {
             </Router>
         </div>
     )
-  }
 }
 
 export default App;
