@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Navbar from '../components/Navbar';
-import PhotoGrid from '../components/PhotoGrid';
+import PhotoGridContainer from './PhotoGridContainer';
 
 function SearchPageContainer(props) {
     return (
         <>
             <Navbar/>
-            <PhotoGrid/>
+            <PhotoGridContainer/>
         </>
     )
 }

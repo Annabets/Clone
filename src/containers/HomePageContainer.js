@@ -2,14 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
-import PhotoGrid from '../components/PhotoGrid';
+import PhotoGridContainer from './PhotoGridContainer';
 
 function HomePageContainer(props) {
     return (
         <>
             <Navbar/>
             <Hero/>
-            <PhotoGrid/>
+            <PhotoGridContainer/>
         </>
     )
 }
