@@ -14,6 +14,11 @@ export function photoGridReducer(state = initialState,action){
                 ...state,
                 columns: action.payload
             }
+        case _.SET_MODAL_OPEN_FLAG:
+            return {
+                ...state,
+                isModalOpen: action.payload
+            }
 
         default:
             return state

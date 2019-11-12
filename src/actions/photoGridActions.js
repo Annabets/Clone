@@ -13,6 +13,14 @@ function setColumns(colNum) {
     }
 }
 
+function setModalOpenFlag(flag) {
+    return{
+        type: _.SET_MODAL_OPEN_FLAG,
+        payload: flag
+    }
+}
+
 export const photoGridActions = {
-    setColumns
+    setColumns,
+    setModalOpenFlag
 }

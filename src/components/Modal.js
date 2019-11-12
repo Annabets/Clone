@@ -8,10 +8,6 @@ import dropdwnBtn from '../assets/icons/dropdwn-icon.svg';
 class Modal extends React.Component{
     constructor(props){
         super(props)
-
-        this.handleDownloadPhoto = this.handleDownloadPhoto.bind(this);
-        this.handleCloseModal=this.handleCloseModal.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleDownloadPhoto=(e)=>{
@@ -27,7 +23,7 @@ class Modal extends React.Component{
 
     handleCloseModal=(e)=>{
         if (e.target.className === "Modal" || e.target.className === "close-btn")
-            this.props.closeModal();
+            this.props.setModalOpenFlag(false);
     }
 
     render() {
@@ -98,7 +94,8 @@ class Modal extends React.Component{
 }
 
 Modal.propTypes = {
-    modalPhoto: PropTypes.object.isRequired
+    modalPhoto: PropTypes.object.isRequired,
+    setModalOpenFlag: PropTypes.func.isRequired
 }
 
 export default Modal;
