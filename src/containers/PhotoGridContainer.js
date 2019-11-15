@@ -6,7 +6,7 @@ import {photoGridActions} from "../actions/photoGridActions";
 import {homePageActions} from "../actions/homePageActions";
 
 function PhotoGridContainer(props) {
-    const {isHomePage,isSearchPage,searchCategory,photos,photoGrid,setColumns,setModalOpenFlag} = props;
+    const {isHomePage,isSearchPage,searchCategory,photos,photoGrid,setColumns,setModalOpenFlag,setModalPhoto} = props;
     return (
         <>
             <PhotoGrid
@@ -20,6 +20,7 @@ function PhotoGridContainer(props) {
                 isModalOpen={photoGrid.isModalOpen}
                 setColumns={setColumns}
                 setModalOpenFlag={setModalOpenFlag}
+                setModalPhoto={setModalPhoto}
             />
         </>
     )
@@ -41,7 +42,8 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
     return {
         setColumns: colNum => dispatch(photoGridActions.setColumns(colNum)),
-        setModalOpenFlag: flag => dispatch(photoGridActions.setModalOpenFlag(flag))
+        setModalOpenFlag: flag => dispatch(photoGridActions.setModalOpenFlag(flag)),
+        setModalPhoto: photo => dispatch(photoGridActions.setModalPhoto(photo))
     }
 }
 

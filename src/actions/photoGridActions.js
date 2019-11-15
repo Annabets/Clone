@@ -20,7 +20,15 @@ function setModalOpenFlag(flag) {
     }
 }
 
+function setModalPhoto(photo) {
+    return{
+        type: _.SET_MODAL_PHOTO,
+        payload: photo
+    }
+}
+
 export const photoGridActions = {
     setColumns,
-    setModalOpenFlag
+    setModalOpenFlag,
+    setModalPhoto
 }

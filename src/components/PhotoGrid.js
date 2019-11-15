@@ -9,9 +9,6 @@ class PhotoGrid extends React.Component {
     constructor(props){
         super(props)
         this.handleResize();
-        this.state = {
-            modalPhoto: {}
-        }
     }
 
     renderColumn=(colNum,colLen)=>{
@@ -45,13 +42,11 @@ class PhotoGrid extends React.Component {
     }
 
     handleGridItemClicked = (e)=>{
-        const {setModalOpenFlag} = this.props;
+        const {setModalOpenFlag, setModalPhoto} = this.props;
         if(e.target.className === "Column-item-content" || e.target.className === "Column-item-img"){
-            this.setState({
-                modalPhoto: photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}),
-            })
+            setModalPhoto(photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}));
+            setModalOpenFlag(true);
         }
-        setModalOpenFlag(true);
     }
 
     handleResize = ()=>{
@@ -89,7 +84,7 @@ class PhotoGrid extends React.Component {
                         {this.renderContainerColumns(columns)}
                     </div>
                 </section>
-                {this.props.isModalOpen && <Modal modalPhoto={this.state.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
+                {this.props.isModalOpen && <Modal modalPhoto={this.props.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
             </>
         )
     }
@@ -105,7 +100,8 @@ PhotoGrid.propTypes = {
     modalPhoto: PropTypes.object.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
     setColumns: PropTypes.func.isRequired,
-    setModalOpenFlag: PropTypes.func.isRequired
+    setModalOpenFlag: PropTypes.func.isRequired,
+    setModalPhoto: PropTypes.func.isRequired
 }
 
 export default PhotoGrid;
