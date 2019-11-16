@@ -1,6 +1,6 @@
 import config from '../assets/config';
 
-function getRandomPhoto() {
+function loadRandomPhoto() {
     const requestOptions = {
         method: 'GET',
         headers: {'Authorization': config.API_key},
@@ -18,6 +18,24 @@ function getRandomPhoto() {
     })
 }
 
+function loadCuratedPhotos(page) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Authorization': config.API_key},
+    };
+
+    return fetch(`https://api.pexels.com/v1/curated?per_page=${config.per_page}&page=${page}`,requestOptions)
+        .then(resp => {
+            return resp.text().then(text => {
+                if(!resp.ok)
+                    return Promise.reject(resp.statusText);
+                else
+                    return Promise.resolve(JSON.parse(text));
+            })
+        })
+}
+
 export const photoService = {
-    getRandomPhoto
+    loadRandomPhoto,
+    loadCuratedPhotos
 }

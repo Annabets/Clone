@@ -14,7 +14,7 @@ function getHeroPhoto() {
         dispatch({
             type: _.GET_HERO_PHOTO_REQUEST
         })
-        photoService.getRandomPhoto().then(
+        photoService.loadRandomPhoto().then(
             photo => {
                 dispatch({
                     type: _.GET_HERO_PHOTO_SUCCESS,
@@ -38,8 +38,31 @@ function getTags() {
     }
 }
 
+function getCuratedPhotos() {
+    return (dispatch, getState) => {
+        dispatch({
+            type: _.GET_CURATED_PHOTOS_REQUEST
+        })
+        photoService.loadCuratedPhotos(getState().homePage.curatedPhotos.length + 1).then(
+            page => {
+                dispatch({
+                    type: _.GET_CURATED_PHOTOS_SUCCESS,
+                    payload: page
+                })
+            },
+            errorMessage => {
+                dispatch({
+                    type: _.GET_CURATED_PHOTOS_FAILURE,
+                    payload: errorMessage
+                })
+            }
+        )
+    }
+}
+
 export const homePageActions = {
     setScrollFlag,
     getHeroPhoto,
-    getTags
+    getTags,
+    getCuratedPhotos
 }

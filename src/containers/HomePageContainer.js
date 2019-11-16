@@ -6,7 +6,13 @@ import PhotoGridContainer from './PhotoGridContainer';
 import {homePageActions} from "../actions/homePageActions";
 
 function HomePageContainer(props) {
-    const {homePage,setScrollFlag,getHeroPhoto,getTags} = props;
+    const {homePage, setScrollFlag, getHeroPhoto, getTags, getCuratedPhotos} = props;
+    let photos = [];
+    homePage.curatedPhotos.forEach(page => {
+        page.photos.forEach(photo => {
+            photos.push(photo)
+        })
+    });
     return (
         <>
             <Navbar
@@ -24,7 +30,8 @@ function HomePageContainer(props) {
                 isHomePage={true}
                 isSearchPage={false}
                 searchCategory=''
-                photos={homePage.curatedPhotos}
+                photos={photos}
+                getMorePhotos={getCuratedPhotos}
             />
         </>
     )
@@ -40,7 +47,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setScrollFlag: value => dispatch(homePageActions.setScrollFlag(value)),
         getHeroPhoto: () => dispatch(homePageActions.getHeroPhoto()),
-        getTags: () => dispatch(homePageActions.getTags())
+        getTags: () => dispatch(homePageActions.getTags()),
+        getCuratedPhotos: () => dispatch(homePageActions.getCuratedPhotos())
     }
 }
 

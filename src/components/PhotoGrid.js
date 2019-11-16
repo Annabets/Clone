@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {photos} from '../assets/mock_data/photos';
 import Modal from './Modal';
 import notLikedBtn from '../assets/icons/n-active-like-btn.svg';
 import likedBtn from '../assets/icons/active-like-btn.svg';
@@ -8,12 +7,14 @@ import likedBtn from '../assets/icons/active-like-btn.svg';
 class PhotoGrid extends React.Component {
     constructor(props){
         super(props)
+        props.getMorePhotos();
         this.handleResize();
     }
 
     renderColumn=(colNum,colLen)=>{
-        let columnPhotos = photos.filter((item,index)=>{
-            return (index%colLen===colNum)
+        const {photos} = this.props;
+        let columnPhotos = photos.filter((item, index) => {
+            return (index % colLen === colNum)
         })
         return columnPhotos.map((photo)=>{
             return(
@@ -42,7 +43,7 @@ class PhotoGrid extends React.Component {
     }
 
     handleGridItemClicked = (e)=>{
-        const {setModalOpenFlag, setModalPhoto} = this.props;
+        const {setModalOpenFlag, setModalPhoto, photos} = this.props;
         if(e.target.className === "Column-item-content" || e.target.className === "Column-item-img"){
             setModalPhoto(photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}));
             setModalOpenFlag(true);
@@ -72,7 +73,7 @@ class PhotoGrid extends React.Component {
     }
 
     render() {
-        const {columns, isHomePage, isSearchPage} = this.props;
+        const {columns, isHomePage, isSearchPage, photos} = this.props;
         return(
             <>
                 <section className="Photo-grid" style={isSearchPage?{top:'57px'}:{top:'0'}}>
@@ -80,9 +81,9 @@ class PhotoGrid extends React.Component {
                         {isHomePage && <h2>{'Free Stock Photos'}</h2>}
                         {isSearchPage && <h1>{'Search results'}</h1>}
                     </div>
-                    <div className="Grid-container">
+                    {photos.length>0 && <div className="Grid-container">
                         {this.renderContainerColumns(columns)}
-                    </div>
+                    </div>}
                 </section>
                 {this.props.isModalOpen && <Modal modalPhoto={this.props.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
             </>
@@ -96,7 +97,8 @@ PhotoGrid.propTypes = {
     searchCategory: PropTypes.string.isRequired,
     isLoadingPhotos: PropTypes.bool.isRequired,
     columns: PropTypes.array.isRequired,
-    photos: PropTypes.object.isRequired,
+    photos: PropTypes.array.isRequired,
+    getMorePhotos: PropTypes.func.isRequired,
     modalPhoto: PropTypes.object.isRequired,
     isModalOpen: PropTypes.bool.isRequired,
     setColumns: PropTypes.func.isRequired,
