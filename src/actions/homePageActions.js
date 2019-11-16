@@ -1,5 +1,6 @@
 import {homePageConstants as _} from '../constants/homePageConstatns';
 import {photoService} from "../services/photoService";
+import {searchCategoriesService} from "../services/searchCategoriesService";
 
 function setScrollFlag(value) {
     return{
@@ -30,7 +31,15 @@ function getHeroPhoto() {
     }
 }
 
+function getTags() {
+    return{
+        type: _.GET_TAGS,
+        payload: searchCategoriesService.generateTags()
+    }
+}
+
 export const homePageActions = {
     setScrollFlag,
-    getHeroPhoto
+    getHeroPhoto,
+    getTags
 }

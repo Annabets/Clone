@@ -6,6 +6,7 @@ class Hero extends React.Component {
     constructor(props){
         super(props)
         props.getHeroPhoto()
+        props.getTags()
     }
 
     renderTags = ()=>{

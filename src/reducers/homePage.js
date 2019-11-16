@@ -19,6 +19,11 @@ export function homePageReducer(state = initialState,action){
                 ...state,
                 heroPhoto: action.payload
             }
+        case _.GET_TAGS:
+            return {
+                ...state,
+                tags: action.payload
+            }
 
         default:
             return state
