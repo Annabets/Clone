@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Modal from './Modal';
 import notLikedBtn from '../assets/icons/n-active-like-btn.svg';
 import likedBtn from '../assets/icons/active-like-btn.svg';
+import {BallPulse} from "react-pure-loaders";
 
 class PhotoGrid extends React.Component {
     constructor(props){
@@ -84,6 +85,12 @@ class PhotoGrid extends React.Component {
                     {photos.length>0 && <div className="Grid-container">
                         {this.renderContainerColumns(columns)}
                     </div>}
+                    <div className="Loading-indicator">
+                        <BallPulse
+                            color={'#1a1a1a'}
+                            loading={true}
+                        />
+                    </div>
                 </section>
                 {this.props.isModalOpen && <Modal modalPhoto={this.props.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
             </>

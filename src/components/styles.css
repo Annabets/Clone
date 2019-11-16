@@ -421,3 +421,9 @@ ul .search-categories li{
 .no-scroll{
     overflow-y: hidden;
 }
+
+.Loading-indicator{
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
