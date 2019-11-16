@@ -6,7 +6,7 @@ import PhotoGridContainer from './PhotoGridContainer';
 import {homePageActions} from "../actions/homePageActions";
 
 function HomePageContainer(props) {
-    const {homePage,setScrollFlag} = props;
+    const {homePage,setScrollFlag,getHeroPhoto} = props;
     return (
         <>
             <Navbar
@@ -15,7 +15,9 @@ function HomePageContainer(props) {
                 setScrollFlag={setScrollFlag}
             />
             <Hero
+                tags={homePage.tags}
                 photo={homePage.heroPhoto}
+                getHeroPhoto={getHeroPhoto}
             />
             <PhotoGridContainer
                 isHomePage={true}
@@ -35,7 +37,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        setScrollFlag: value => dispatch(homePageActions.setScrollFlag(value))
+        setScrollFlag: value => dispatch(homePageActions.setScrollFlag(value)),
+        getHeroPhoto: () => dispatch(homePageActions.getHeroPhoto())
     }
 }
 
