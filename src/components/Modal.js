@@ -10,15 +10,20 @@ class Modal extends React.Component{
         super(props)
     }
 
-    handleDownloadPhoto=(e)=>{
-        fetch(e.target.value)
+    downloadPhoto = (url)=>{
+        fetch(url)
             .then(res => res.blob())
             .then(blob => download(blob))
     }
 
+    handleDownloadPhoto=(e)=>{
+        this.downloadPhoto(e.target.value)
+    }
+
     handleSubmit=(e)=>{
         e.preventDefault();
-
+        const url = e.target.size.value;
+        url && this.downloadPhoto(url)
     }
 
     handleCloseModal=(e)=>{
