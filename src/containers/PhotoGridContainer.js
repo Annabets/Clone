@@ -16,7 +16,8 @@ function PhotoGridContainer(props) {
         setModalOpenFlag,
         setModalPhoto,
         getMorePhotos,
-        isLoadingPhotos
+        isLoadingPhotos,
+        isUploadFailed
     } = props;
     return (
         <>
@@ -28,6 +29,7 @@ function PhotoGridContainer(props) {
                 getMorePhotos={getMorePhotos}
                 columns={photoGrid.columns}
                 isLoadingPhotos={isLoadingPhotos}
+                isUploadFailed={isUploadFailed}
                 modalPhoto={photoGrid.modalPhoto}
                 isModalOpen={photoGrid.isModalOpen}
                 setColumns={setColumns}
@@ -44,7 +46,8 @@ PhotoGridContainer.propTypes = {
     searchCategory: PropTypes.string.isRequired,
     photos: PropTypes.array.isRequired,
     getMorePhotos: PropTypes.func.isRequired,
-    isLoadingPhotos: PropTypes.bool.isRequired
+    isLoadingPhotos: PropTypes.bool.isRequired,
+    isUploadFailed: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = store => {

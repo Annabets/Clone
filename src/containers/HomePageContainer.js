@@ -33,6 +33,7 @@ function HomePageContainer(props) {
                 photos={photos}
                 getMorePhotos={getCuratedPhotos}
                 isLoadingPhotos={homePage.isLoadingPhotos}
+                isUploadFailed={homePage.isUploadFailed}
             />
         </>
     )

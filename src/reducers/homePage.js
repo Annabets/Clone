@@ -5,7 +5,8 @@ const initialState = {
     tags:[],
     heroPhoto: {},
     curatedPhotos:[],
-    isLoadingPhotos: false
+    isLoadingPhotos: false,
+    isUploadFailed: false
 }
 
 export function homePageReducer(state = initialState,action){
@@ -35,6 +36,12 @@ export function homePageReducer(state = initialState,action){
                 ...state,
                 curatedPhotos: state.curatedPhotos.concat(action.payload),
                 isLoadingPhotos: false
+            }
+        case _.GET_CURATED_PHOTOS_FAILURE:
+            return {
+                ...state,
+                isLoadingPhotos: false,
+                isUploadFailed: true
             }
 
         default:

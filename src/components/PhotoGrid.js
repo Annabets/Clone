@@ -66,8 +66,8 @@ class PhotoGrid extends React.Component {
     }
 
     handleScroll = ()=>{
-        const {isLoadingPhotos, getMorePhotos} = this.props;
-        if (((window.innerHeight * 2 + window.scrollY) >= document.body.scrollHeight) && !isLoadingPhotos) {
+        const {isLoadingPhotos, getMorePhotos, isUploadFailed} = this.props;
+        if (((window.innerHeight * 2 + window.scrollY) >= document.body.scrollHeight) && !isLoadingPhotos && !isUploadFailed) {
             getMorePhotos();
         }
     }
@@ -83,15 +83,26 @@ class PhotoGrid extends React.Component {
     }
 
     render() {
-        const {columns, isHomePage, isSearchPage, photos, isLoadingPhotos} = this.props;
+        const {
+            columns,
+            isHomePage,
+            isSearchPage,
+            photos,
+            isLoadingPhotos,
+            isUploadFailed,
+            isModalOpen,
+            modalPhoto,
+            setModalOpenFlag
+        } = this.props;
         return(
             <>
-                <section className="Photo-grid" style={isSearchPage?{top:'57px'}:{top:'0'}}>
+                <section className="Photo-grid" style={isSearchPage ? {top: '57px'} : {top: '0'}}>
                     <div className="Photo-grid-title">
                         {isHomePage && <h2>{'Free Stock Photos'}</h2>}
                         {isSearchPage && <h1>{'Search results'}</h1>}
                     </div>
-                    {photos.length>0 && <div className="Grid-container">
+                    {photos.length > 0 &&
+                    <div className="Grid-container">
                         {this.renderContainerColumns(columns)}
                     </div>}
                     {isLoadingPhotos &&
@@ -101,8 +112,13 @@ class PhotoGrid extends React.Component {
                             loading={true}
                         />
                     </div>}
+                    {isUploadFailed && <h3>Failed to upload photos</h3>}
                 </section>
-                {this.props.isModalOpen && <Modal modalPhoto={this.props.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
+                {isModalOpen &&
+                <Modal
+                    modalPhoto={modalPhoto}
+                    setModalOpenFlag={setModalOpenFlag}
+                />}
             </>
         )
     }
@@ -113,6 +129,7 @@ PhotoGrid.propTypes = {
     isSearchPage: PropTypes.bool.isRequired,
     searchCategory: PropTypes.string.isRequired,
     isLoadingPhotos: PropTypes.bool.isRequired,
+    isUploadFailed: PropTypes.bool.isRequired,
     columns: PropTypes.array.isRequired,
     photos: PropTypes.array.isRequired,
     getMorePhotos: PropTypes.func.isRequired,
