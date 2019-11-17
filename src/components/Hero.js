@@ -21,9 +21,10 @@ class Hero extends React.Component {
         const {photo} = this.props;
         return(
             <>
-                <section className="Hero-container" style={{backgroundImage:photo.src?`url(${photo.src.original})`:null}}>
+                <section className="Hero-container"
+                         style={{backgroundImage: photo.src ? `url(${photo.src.original})` : null}}>
                     <div className="Hero-content">
-                        <h1 className="Hero-title">{'The best free stock photos & videos shared by talented creators.'}</h1>
+                        <h1 className="Hero-title">{'The best free stock photos shared by talented creators.'}</h1>
                         <div className="Hero-search">
                             <form action="/search" role="search">
                                 <div className="text-input-with-btn">

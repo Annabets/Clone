@@ -53,6 +53,7 @@ class PhotoGrid extends React.Component {
         if(e.target.className === "Column-item-content" || e.target.className === "Column-item-img"){
             setModalPhoto(photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}));
             setModalOpenFlag(true);
+            document.body.style = `overflow-y: hidden`;
         }
     }
 
@@ -113,7 +114,9 @@ class PhotoGrid extends React.Component {
         } = this.props;
         return(
             <>
-                <section className="Photo-grid" style={isSearchPage ? {top: '57px'} : {top: '0'}}>
+                <section className="Photo-grid" style={{
+                    top:  isSearchPage ? '57px' : null
+                }}>
                     <div className="Photo-grid-title">
                         {isHomePage && <h2>{'Free Stock Photos'}</h2>}
                         {isSearchPage && <h1>{`${searchQuery} Photos`}</h1>}
@@ -129,7 +132,7 @@ class PhotoGrid extends React.Component {
                             loading={true}
                         />
                     </div>}
-                    {isUploadFailed && <h3>Failed to upload photos</h3>}
+                    {isUploadFailed && <h3>{'Failed to upload photos'}</h3>}
                 </section>
                 {isModalOpen &&
                 <Modal

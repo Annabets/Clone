@@ -27,8 +27,10 @@ class Modal extends React.Component{
     }
 
     handleCloseModal=(e)=>{
-        if (e.target.className === "Modal" || e.target.className === "close-btn")
+        if (e.target.className === "Modal" || e.target.className === "close-btn"){
             this.props.setModalOpenFlag(false);
+            document.body.style = `overflow-y: visible`;
+        }
     }
 
     render() {
