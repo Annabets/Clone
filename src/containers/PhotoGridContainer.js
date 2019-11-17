@@ -17,7 +17,8 @@ function PhotoGridContainer(props) {
         getMorePhotos,
         isLoadingPhotos,
         isUploadFailed,
-        likePhoto
+        likePhoto,
+        likeModalPhoto
     } = props;
     let photos = [];
     pages.forEach(page => {
@@ -42,6 +43,7 @@ function PhotoGridContainer(props) {
                 setModalOpenFlag={setModalOpenFlag}
                 setModalPhoto={setModalPhoto}
                 likePhoto={likePhoto}
+                likeModalPhoto={likeModalPhoto}
             />
         </>
     )
@@ -68,7 +70,8 @@ const mapDispatchToProps = dispatch => {
     return {
         setColumns: colNum => dispatch(photoGridActions.setColumns(colNum)),
         setModalOpenFlag: flag => dispatch(photoGridActions.setModalOpenFlag(flag)),
-        setModalPhoto: photo => dispatch(photoGridActions.setModalPhoto(photo))
+        setModalPhoto: photo => dispatch(photoGridActions.setModalPhoto(photo)),
+        likeModalPhoto: () => dispatch(photoGridActions.toggleModalPhotoLike())
     }
 }
 

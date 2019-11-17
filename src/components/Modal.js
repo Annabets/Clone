@@ -27,21 +27,22 @@ class Modal extends React.Component{
     }
 
     render() {
+        const {modalPhoto, handleLikeBtnClick} = this.props;
         return(
             <>
                 <div className="Modal" onClick={this.handleCloseModal}>
                     <span className="close-btn">&times;</span>
                     <div className="Modal-content">
                         <div className="Modal-action-bar">
-                            <a className="modal-like-btn">
-                                {this.props.modalPhoto.liked ||
+                            <a className="modal-like-btn" onClick={handleLikeBtnClick}>
+                                {modalPhoto.liked ||
                                 <img src={notLikedBtn} width="24" height="24" alt=""/>}
-                                {this.props.modalPhoto.liked &&
+                                {modalPhoto.liked &&
                                 <img src={likedBtn} width="24" height="24" alt=""/>}
                             </a>
                             <div className="Modal-download">
                                 <button className="transparent-btn download-btn" onClick={this.handleDownloadPhoto}
-                                        value={this.props.modalPhoto.src.original}>
+                                        value={modalPhoto.src.original}>
                                     {'Free Download'}
                                 </button>
                                 <div className="Modal-dropdown">
@@ -55,22 +56,22 @@ class Modal extends React.Component{
                                             <ul>
                                                 <li>
                                                     <input type="radio" name="size"
-                                                           value={this.props.modalPhoto.src.original}/>
+                                                           value={modalPhoto.src.original}/>
                                                     <span><strong>Original</strong></span>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="size"
-                                                           value={this.props.modalPhoto.src.large}/>
+                                                           value={modalPhoto.src.large}/>
                                                     <span><strong>Large</strong></span>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="size"
-                                                           value={this.props.modalPhoto.src.medium}/>
+                                                           value={modalPhoto.src.medium}/>
                                                     <span><strong>Medium</strong></span>
                                                 </li>
                                                 <li>
                                                     <input type="radio" name="size"
-                                                           value={this.props.modalPhoto.src.small}/>
+                                                           value={modalPhoto.src.small}/>
                                                     <span><strong>Small</strong></span>
                                                 </li>
                                             </ul>
@@ -84,7 +85,7 @@ class Modal extends React.Component{
                             </div>
                         </div>
                         <div className="Modal-photo">
-                            <img src={`${this.props.modalPhoto.src.original}`} alt=""/>
+                            <img src={`${modalPhoto.src.original}`} alt=""/>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,8 @@ class Modal extends React.Component{
 
 Modal.propTypes = {
     modalPhoto: PropTypes.object.isRequired,
-    setModalOpenFlag: PropTypes.func.isRequired
+    setModalOpenFlag: PropTypes.func.isRequired,
+    handleLikeBtnClick: PropTypes.func.isRequired
 }
 
 export default Modal;

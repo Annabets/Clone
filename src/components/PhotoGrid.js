@@ -61,6 +61,12 @@ class PhotoGrid extends React.Component {
         likePhoto(e.currentTarget.value);
     }
 
+    handleModalLikeBtnClick = ()=>{
+        const {modalPhoto, likePhoto, likeModalPhoto} = this.props;
+        likeModalPhoto();
+        likePhoto(modalPhoto.id);
+    }
+
     handleResize = ()=>{
         const {columns,setColumns} = this.props;
         const colNum = columns.length;
@@ -129,6 +135,7 @@ class PhotoGrid extends React.Component {
                 <Modal
                     modalPhoto={modalPhoto}
                     setModalOpenFlag={setModalOpenFlag}
+                    handleLikeBtnClick={this.handleModalLikeBtnClick}
                 />}
             </>
         )
@@ -149,7 +156,8 @@ PhotoGrid.propTypes = {
     setColumns: PropTypes.func.isRequired,
     setModalOpenFlag: PropTypes.func.isRequired,
     setModalPhoto: PropTypes.func.isRequired,
-    likePhoto: PropTypes.func.isRequired
+    likePhoto: PropTypes.func.isRequired,
+    likeModalPhoto: PropTypes.func.isRequired
 }
 
 export default PhotoGrid;

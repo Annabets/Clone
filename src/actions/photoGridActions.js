@@ -27,8 +27,15 @@ function setModalPhoto(photo) {
     }
 }
 
+function toggleModalPhotoLike() {
+    return {
+        type: _.TOGGLE_MODAL_PHOTO_LIKE
+    }
+}
+
 export const photoGridActions = {
     setColumns,
     setModalOpenFlag,
-    setModalPhoto
+    setModalPhoto,
+    toggleModalPhotoLike
 }

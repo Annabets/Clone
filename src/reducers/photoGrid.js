@@ -23,6 +23,14 @@ export function photoGridReducer(state = initialState,action){
                 ...state,
                 modalPhoto: action.payload
             }
+        case _.TOGGLE_MODAL_PHOTO_LIKE:
+            return {
+                ...state,
+                modalPhoto: {
+                    ...state.modalPhoto,
+                    liked: !state.modalPhoto.liked
+                }
+            }
 
         default:
             return state
