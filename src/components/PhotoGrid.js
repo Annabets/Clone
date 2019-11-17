@@ -20,7 +20,7 @@ class PhotoGrid extends React.Component {
         return columnPhotos.map((photo)=>{
             return(
                 <div className="Column-item" key={photo.id} id={photo.id} onClick={this.handleGridItemClicked}>
-                    <img className="Column-item-img" src={`${photo.src.original}`} alt=""/>
+                    <img className="Column-item-img" src={`${photo.src.large}`} alt=""/>
                     <div className="Column-item-content">
                         <a href={`${photo.photographer_url}`} target="_blank">
                             {`${photo.photographer}`}
@@ -65,16 +65,25 @@ class PhotoGrid extends React.Component {
             setColumns(4)
     }
 
+    handleScroll = ()=>{
+        const {isLoadingPhotos, getMorePhotos} = this.props;
+        if (((window.innerHeight * 2 + window.scrollY) >= document.body.scrollHeight) && !isLoadingPhotos) {
+            getMorePhotos();
+        }
+    }
+
     componentDidMount = ()=>{
         window.addEventListener("resize", this.handleResize);
+        window.addEventListener("scroll", this.handleScroll);
     }
 
     componentWillUnmount= ()=>{
         window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener("scroll", this.handleScroll);
     }
 
     render() {
-        const {columns, isHomePage, isSearchPage, photos} = this.props;
+        const {columns, isHomePage, isSearchPage, photos, isLoadingPhotos} = this.props;
         return(
             <>
                 <section className="Photo-grid" style={isSearchPage?{top:'57px'}:{top:'0'}}>
@@ -85,12 +94,13 @@ class PhotoGrid extends React.Component {
                     {photos.length>0 && <div className="Grid-container">
                         {this.renderContainerColumns(columns)}
                     </div>}
+                    {isLoadingPhotos &&
                     <div className="Loading-indicator">
                         <BallPulse
                             color={'#1a1a1a'}
                             loading={true}
                         />
-                    </div>
+                    </div>}
                 </section>
                 {this.props.isModalOpen && <Modal modalPhoto={this.props.modalPhoto} setModalOpenFlag={this.props.setModalOpenFlag} />}
             </>

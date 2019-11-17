@@ -6,7 +6,8 @@ import {photoGridActions} from "../actions/photoGridActions";
 import {homePageActions} from "../actions/homePageActions";
 
 function PhotoGridContainer(props) {
-    const {isHomePage,
+    const {
+        isHomePage,
         isSearchPage,
         searchCategory,
         photos,
@@ -14,7 +15,9 @@ function PhotoGridContainer(props) {
         setColumns,
         setModalOpenFlag,
         setModalPhoto,
-        getMorePhotos} = props;
+        getMorePhotos,
+        isLoadingPhotos
+    } = props;
     return (
         <>
             <PhotoGrid
@@ -24,7 +27,7 @@ function PhotoGridContainer(props) {
                 photos={photos}
                 getMorePhotos={getMorePhotos}
                 columns={photoGrid.columns}
-                isLoadingPhotos={photoGrid.isLoadingPhotos}
+                isLoadingPhotos={isLoadingPhotos}
                 modalPhoto={photoGrid.modalPhoto}
                 isModalOpen={photoGrid.isModalOpen}
                 setColumns={setColumns}
@@ -40,7 +43,8 @@ PhotoGridContainer.propTypes = {
     isSearchPage: PropTypes.bool.isRequired,
     searchCategory: PropTypes.string.isRequired,
     photos: PropTypes.array.isRequired,
-    getMorePhotos: PropTypes.func.isRequired
+    getMorePhotos: PropTypes.func.isRequired,
+    isLoadingPhotos: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = store => {

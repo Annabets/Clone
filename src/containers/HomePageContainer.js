@@ -32,6 +32,7 @@ function HomePageContainer(props) {
                 searchCategory=''
                 photos={photos}
                 getMorePhotos={getCuratedPhotos}
+                isLoadingPhotos={homePage.isLoadingPhotos}
             />
         </>
     )

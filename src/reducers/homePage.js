@@ -4,7 +4,8 @@ const initialState = {
     isOnTop: true,
     tags:[],
     heroPhoto: {},
-    curatedPhotos:[]
+    curatedPhotos:[],
+    isLoadingPhotos: false
 }
 
 export function homePageReducer(state = initialState,action){
@@ -24,10 +25,16 @@ export function homePageReducer(state = initialState,action){
                 ...state,
                 tags: action.payload
             }
+        case _.GET_CURATED_PHOTOS_REQUEST:
+            return {
+                ...state,
+                isLoadingPhotos: true
+            }
         case _.GET_CURATED_PHOTOS_SUCCESS:
             return {
                 ...state,
-                curatedPhotos: state.curatedPhotos.concat(action.payload)
+                curatedPhotos: state.curatedPhotos.concat(action.payload),
+                isLoadingPhotos: false
             }
 
         default:

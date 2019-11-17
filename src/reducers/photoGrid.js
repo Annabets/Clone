@@ -1,7 +1,6 @@
 import {photoGridConstants as _} from "../constants/photoGridConstants";
 
 const initialState = {
-    isLoadingPhotos: false,
     columns:[],
     modalPhoto: {},
     isModalOpen: false
