@@ -60,9 +60,17 @@ function getCuratedPhotos() {
     }
 }
 
+function toggleLike(photoID) {
+    return {
+        type: _.TOGGLE_LIKE,
+        payload: photoID
+    }
+}
+
 export const homePageActions = {
     setScrollFlag,
     getHeroPhoto,
     getTags,
-    getCuratedPhotos
+    getCuratedPhotos,
+    toggleLike
 }

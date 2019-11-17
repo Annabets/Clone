@@ -43,6 +43,18 @@ export function homePageReducer(state = initialState,action){
                 isLoadingPhotos: false,
                 isUploadFailed: true
             }
+        case _.TOGGLE_LIKE:
+            return {
+                ...state,
+                curatedPhotos: state.curatedPhotos.map((page) => {
+                    return {
+                        ...page,
+                        photos: page.photos.map((photo) => {
+                            return (photo.id === Number(action.payload)) ? {...photo, liked: !photo.liked} : photo
+                        })
+                    }
+                })
+            }
 
         default:
             return state

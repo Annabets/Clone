@@ -24,13 +24,13 @@ class PhotoGrid extends React.Component {
         })
         return columnPhotos.map((photo)=>{
             return(
-                <div className="Column-item" key={photo.id} id={photo.id} onClick={this.handleGridItemClicked}>
+                <div className="Column-item" key={photo.id} id={photo.id} onClick={this.handleGridItemClick}>
                     <img className="Column-item-img" src={`${photo.src.large}`} alt=""/>
                     <div className="Column-item-content">
                         <a href={`${photo.photographer_url}`} target="_blank">
                             {`${photo.photographer}`}
                         </a>
-                        <button className="transparent-btn">
+                        <button className="transparent-btn" value={photo.id} onClick={this.handleLikeBtnClick}>
                             {photo.liked || <img src={notLikedBtn} width="24" height="24" alt=""/>}
                             {photo.liked && <img src={likedBtn} width="24" height="24" alt=""/>}
                         </button>
@@ -48,12 +48,17 @@ class PhotoGrid extends React.Component {
         })
     }
 
-    handleGridItemClicked = (e)=>{
+    handleGridItemClick = (e)=>{
         const {setModalOpenFlag, setModalPhoto, photos} = this.props;
         if(e.target.className === "Column-item-content" || e.target.className === "Column-item-img"){
             setModalPhoto(photos.find((photo)=>{return photo.id === Number(e.currentTarget.id)}));
             setModalOpenFlag(true);
         }
+    }
+
+    handleLikeBtnClick = (e)=>{
+        const {likePhoto} = this.props;
+        likePhoto(e.currentTarget.value);
     }
 
     handleResize = ()=>{
@@ -143,7 +148,8 @@ PhotoGrid.propTypes = {
     isModalOpen: PropTypes.bool.isRequired,
     setColumns: PropTypes.func.isRequired,
     setModalOpenFlag: PropTypes.func.isRequired,
-    setModalPhoto: PropTypes.func.isRequired
+    setModalPhoto: PropTypes.func.isRequired,
+    likePhoto: PropTypes.func.isRequired
 }
 
 export default PhotoGrid;

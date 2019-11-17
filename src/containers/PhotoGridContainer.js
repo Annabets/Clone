@@ -16,7 +16,8 @@ function PhotoGridContainer(props) {
         setModalPhoto,
         getMorePhotos,
         isLoadingPhotos,
-        isUploadFailed
+        isUploadFailed,
+        likePhoto
     } = props;
     let photos = [];
     pages.forEach(page => {
@@ -40,6 +41,7 @@ function PhotoGridContainer(props) {
                 setColumns={setColumns}
                 setModalOpenFlag={setModalOpenFlag}
                 setModalPhoto={setModalPhoto}
+                likePhoto={likePhoto}
             />
         </>
     )
@@ -52,7 +54,8 @@ PhotoGridContainer.propTypes = {
     pages: PropTypes.array.isRequired,
     getMorePhotos: PropTypes.func.isRequired,
     isLoadingPhotos: PropTypes.bool.isRequired,
-    isUploadFailed: PropTypes.bool.isRequired
+    isUploadFailed: PropTypes.bool.isRequired,
+    likePhoto: PropTypes.func.isRequired
 }
 
 const mapStateToProps = store => {

@@ -6,7 +6,7 @@ import {useLocation} from 'react-router-dom';
 import {searchPageActions} from "../actions/searchPageActions";
 
 function SearchPageContainer(props) {
-    const {searchPage, getSearchPhotos} = props;
+    const {searchPage, getSearchPhotos, likePhoto} = props;
     const query = new URLSearchParams(useLocation().search).get("query");
     if(!query)
         window.location.replace('/');
@@ -24,6 +24,7 @@ function SearchPageContainer(props) {
                     getMorePhotos={getSearchPhotos}
                     isLoadingPhotos={searchPage.isLoadingPhotos}
                     isUploadFailed={searchPage.isUploadFailed}
+                    likePhoto={likePhoto}
                 />
             </>
         )
@@ -37,7 +38,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getSearchPhotos: query => dispatch(searchPageActions.getSearchPhotos(query))
+        getSearchPhotos: query => dispatch(searchPageActions.getSearchPhotos(query)),
+        likePhoto: photoID => dispatch(searchPageActions.toggleLike(photoID))
     }
 }
 

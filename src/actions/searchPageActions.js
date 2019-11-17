@@ -23,6 +23,14 @@ function getSearchPhotos(query) {
     }
 }
 
+function toggleLike(photoID) {
+    return {
+        type: _.TOGGLE_LIKE,
+        payload: photoID
+    }
+}
+
 export const searchPageActions = {
-    getSearchPhotos
+    getSearchPhotos,
+    toggleLike
 }
