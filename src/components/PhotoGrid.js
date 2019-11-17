@@ -8,8 +8,13 @@ import {BallPulse} from "react-pure-loaders";
 class PhotoGrid extends React.Component {
     constructor(props){
         super(props)
-        props.getMorePhotos();
+        this.handleGetMorePhotos();
         this.handleResize();
+    }
+
+    handleGetMorePhotos = () => {
+        const {isSearchPage, searchQuery, getMorePhotos} = this.props;
+        isSearchPage? getMorePhotos(searchQuery):getMorePhotos();
     }
 
     renderColumn=(colNum,colLen)=>{
@@ -66,9 +71,9 @@ class PhotoGrid extends React.Component {
     }
 
     handleScroll = ()=>{
-        const {isLoadingPhotos, getMorePhotos, isUploadFailed} = this.props;
+        const {isLoadingPhotos, isUploadFailed} = this.props;
         if (((window.innerHeight * 2 + window.scrollY) >= document.body.scrollHeight) && !isLoadingPhotos && !isUploadFailed) {
-            getMorePhotos();
+            this.handleGetMorePhotos();
         }
     }
 

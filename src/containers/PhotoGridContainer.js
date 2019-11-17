@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 import PhotoGrid from '../components/PhotoGrid';
 import PropTypes from 'prop-types';
 import {photoGridActions} from "../actions/photoGridActions";
-import {homePageActions} from "../actions/homePageActions";
 
 function PhotoGridContainer(props) {
     const {
         isHomePage,
         isSearchPage,
         searchQuery,
-        photos,
+        pages,
         photoGrid,
         setColumns,
         setModalOpenFlag,
@@ -19,6 +18,12 @@ function PhotoGridContainer(props) {
         isLoadingPhotos,
         isUploadFailed
     } = props;
+    let photos = [];
+    pages.forEach(page => {
+        page.photos.forEach(photo => {
+            photos.push(photo)
+        })
+    });
     return (
         <>
             <PhotoGrid
@@ -44,7 +49,7 @@ PhotoGridContainer.propTypes = {
     isHomePage: PropTypes.bool.isRequired,
     isSearchPage: PropTypes.bool.isRequired,
     searchQuery: PropTypes.string,
-    photos: PropTypes.array.isRequired,
+    pages: PropTypes.array.isRequired,
     getMorePhotos: PropTypes.func.isRequired,
     isLoadingPhotos: PropTypes.bool.isRequired,
     isUploadFailed: PropTypes.bool.isRequired

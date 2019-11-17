@@ -35,7 +35,25 @@ function loadCuratedPhotos(page) {
         })
 }
 
+function loadSearchPhotos(query, page) {
+    const requestOptions = {
+        method: 'GET',
+        headers: {'Authorization': config.API_key},
+    };
+
+    return fetch(`https://api.pexels.com/v1/search?query=${query}&per_page=${config.per_page}&page=${page}`,requestOptions)
+        .then(resp => {
+            return resp.text().then(text => {
+                if(!resp.ok)
+                    return Promise.reject(resp.statusText);
+                else
+                    return Promise.resolve(JSON.parse(text));
+            })
+        })
+}
+
 export const photoService = {
     loadRandomPhoto,
-    loadCuratedPhotos
+    loadCuratedPhotos,
+    loadSearchPhotos
 }

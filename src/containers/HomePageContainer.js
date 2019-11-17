@@ -7,12 +7,6 @@ import {homePageActions} from "../actions/homePageActions";
 
 function HomePageContainer(props) {
     const {homePage, setScrollFlag, getHeroPhoto, getTags, getCuratedPhotos} = props;
-    let photos = [];
-    homePage.curatedPhotos.forEach(page => {
-        page.photos.forEach(photo => {
-            photos.push(photo)
-        })
-    });
     return (
         <>
             <Navbar
@@ -29,7 +23,7 @@ function HomePageContainer(props) {
             <PhotoGridContainer
                 isHomePage={true}
                 isSearchPage={false}
-                photos={photos}
+                pages={homePage.curatedPhotos}
                 getMorePhotos={getCuratedPhotos}
                 isLoadingPhotos={homePage.isLoadingPhotos}
                 isUploadFailed={homePage.isUploadFailed}
