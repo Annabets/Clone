@@ -92,14 +92,15 @@ class PhotoGrid extends React.Component {
             isUploadFailed,
             isModalOpen,
             modalPhoto,
-            setModalOpenFlag
+            setModalOpenFlag,
+            searchQuery
         } = this.props;
         return(
             <>
                 <section className="Photo-grid" style={isSearchPage ? {top: '57px'} : {top: '0'}}>
                     <div className="Photo-grid-title">
                         {isHomePage && <h2>{'Free Stock Photos'}</h2>}
-                        {isSearchPage && <h1>{'Search results'}</h1>}
+                        {isSearchPage && <h1>{`${searchQuery} Photos`}</h1>}
                     </div>
                     {photos.length > 0 &&
                     <div className="Grid-container">
@@ -127,7 +128,7 @@ class PhotoGrid extends React.Component {
 PhotoGrid.propTypes = {
     isHomePage: PropTypes.bool.isRequired,
     isSearchPage: PropTypes.bool.isRequired,
-    searchCategory: PropTypes.string.isRequired,
+    searchQuery: PropTypes.string,
     isLoadingPhotos: PropTypes.bool.isRequired,
     isUploadFailed: PropTypes.bool.isRequired,
     columns: PropTypes.array.isRequired,

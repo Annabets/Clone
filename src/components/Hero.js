@@ -12,7 +12,7 @@ class Hero extends React.Component {
     renderTags = ()=>{
         return this.props.tags.map((item,index)=>{
             return(
-                <li key={index}><a href={`/search/${item}`}>{item}</a></li>
+                <li key={index}><a href={`/search?query=${item.toLowerCase()}`}>{item}</a></li>
             )
         })
     }
@@ -25,9 +25,9 @@ class Hero extends React.Component {
                     <div className="Hero-content">
                         <h1 className="Hero-title">{'The best free stock photos & videos shared by talented creators.'}</h1>
                         <div className="Hero-search">
-                            <form role="search">
+                            <form action="/search" role="search">
                                 <div className="text-input-with-btn">
-                                    <input id="hero-srch" type="search" placeholder="Search for free photos" required="required"/>
+                                    <input id="hero-srch" name="query" type="search" placeholder="Search for free photos" required="required"/>
                                     <button className="transparent-btn search-btn" type="submit" title="Search for stock photos">
                                         <img src={srchIcon} width="20" height="20" alt=""/>
                                     </button>

@@ -40,9 +40,9 @@ class Navbar extends React.Component{
                                 </a>
                             </div>
                             <div className={`Navbar-search ${isOnTop && isHomePage?'Navbar-search-hide':null}`}>
-                                <form role="search">
+                                <form action="/search" role="search">
                                     <div className="text-input-with-btn">
-                                        <input id="nav-srch" type="search" placeholder="Search for free photos" required="required"/>
+                                        <input id="nav-srch" name="query" type="search" placeholder="Search for free photos" required="required"/>
                                         <button className="transparent-btn search-btn" type="submit" title="Search for stock photos">
                                             <img src={srchIcon} width="20" height="20" alt=""/>
                                         </button>

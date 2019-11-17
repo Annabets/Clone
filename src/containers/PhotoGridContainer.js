@@ -9,7 +9,7 @@ function PhotoGridContainer(props) {
     const {
         isHomePage,
         isSearchPage,
-        searchCategory,
+        searchQuery,
         photos,
         photoGrid,
         setColumns,
@@ -24,7 +24,7 @@ function PhotoGridContainer(props) {
             <PhotoGrid
                 isHomePage={isHomePage}
                 isSearchPage={isSearchPage}
-                searchCategory={searchCategory}
+                searchQuery={searchQuery}
                 photos={photos}
                 getMorePhotos={getMorePhotos}
                 columns={photoGrid.columns}
@@ -43,7 +43,7 @@ function PhotoGridContainer(props) {
 PhotoGridContainer.propTypes = {
     isHomePage: PropTypes.bool.isRequired,
     isSearchPage: PropTypes.bool.isRequired,
-    searchCategory: PropTypes.string.isRequired,
+    searchQuery: PropTypes.string,
     photos: PropTypes.array.isRequired,
     getMorePhotos: PropTypes.func.isRequired,
     isLoadingPhotos: PropTypes.bool.isRequired,

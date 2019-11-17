@@ -2,10 +2,15 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Navbar from '../components/Navbar';
 import PhotoGridContainer from './PhotoGridContainer';
+import {useLocation} from 'react-router-dom';
 
 function SearchPageContainer(props) {
     const {searchPage} = props;
-    return (
+    const query = new URLSearchParams(useLocation().search).get("query");
+    if(!query)
+        window.location.replace('/');
+    else
+        return (
         <>
             <Navbar
                 isHomePage={false}
@@ -13,8 +18,11 @@ function SearchPageContainer(props) {
             <PhotoGridContainer
                 isHomePage={false}
                 isSearchPage={true}
-                searchCategory={searchPage.searchCategory}
+                searchQuery={query}
                 photos={searchPage.searchPhotos}
+                getMorePhotos={()=>{}}
+                isLoadingPhotos={false}
+                isUploadFailed={false}
             />
         </>
     )

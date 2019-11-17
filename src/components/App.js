@@ -11,7 +11,7 @@ function App(props) {
                 <Route exact path="/">
                     <HomePageContainer/>
                 </Route>
-                <Route strict path="/search">
+                <Route exact path="/search">
                     <SearchPageContainer/>
                 </Route>
             </Router>

@@ -29,7 +29,6 @@ function HomePageContainer(props) {
             <PhotoGridContainer
                 isHomePage={true}
                 isSearchPage={false}
-                searchCategory=''
                 photos={photos}
                 getMorePhotos={getCuratedPhotos}
                 isLoadingPhotos={homePage.isLoadingPhotos}

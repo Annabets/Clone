@@ -1,6 +1,7 @@
 const initialState = {
-    searchCategory:'',
-    searchPhotos:{}
+    searchPhotos:[],
+    isLoadingPhotos: false,
+    isUploadFailed: false
 }
 
 export function searchPageReducer(state = initialState,action){
